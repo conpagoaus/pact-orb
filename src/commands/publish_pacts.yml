@@ -1,0 +1,40 @@
+description: >
+  This command publishes pacts to a pact broker.
+parameters:
+  tag:
+    type: "string"
+    default: ""
+    description: >
+      Will be used to tag contract. If empty not used. Read more about pact tags [here](https://docs.pact.io/pact_broker/tags)
+  consumer_version:
+    type: "string"
+    description: >
+      Consumer version. Usually the commit SHA.
+  pact_broker_token:
+    type: env_var_name
+    default: PACT_BROKER_TOKEN
+    description: >
+      Pact broker token. Needs to have write permissions to publish pacts.
+  pact_broker_url:
+    type: env_var_name
+    default: PACT_BROKER_BASE_URL
+    description: >
+      Pact broker url.
+  path:
+    type: "string"
+    default: "./pacts"
+    description: >
+      Path to pact contracts.
+  dry_run:
+    type: "boolean"
+    default: false
+    description: >
+      If true, will not publish pacts to the pact broker and will only print the commands.
+steps:
+  - run:
+      command: |
+        pact-broker publish << parameters.path >> \
+          --consumer-app-version << parameters.consumer_version >> \
+          --tag << parameters.tag >> \
+          --broker-base-url ${<< parameters.pact_broker_url >>} \
+          --broker-token ${<< parameters.pact_broker_token >>}

@@ -1,0 +1,19 @@
+description: |
+  Publish pact contracts to a pact broker. Usually used in a consumer build.
+
+usage:
+  version: 2.1
+  orbs:
+    pact: conpago/pact@x.y # where x.y is orb version
+  jobs:
+    publish_pacts_example:
+      docker:
+        - image: pact # this will use the latest version of the pact image
+      steps:
+        - checkout
+        - publish_pacts:
+            path: ./pacts
+            consumer_version: $CIRCLE_SHA1
+            tag: $CIRCLE_BRANCH
+  workflows:
+    - publish_pacts_example
