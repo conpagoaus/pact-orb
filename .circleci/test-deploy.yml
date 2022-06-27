@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  pact-orb: conpago/pact-orb@dev:<<pipeline.git.revision>>
+  pact: conpago/pact@dev:<<pipeline.git.revision>>
   orb-tools: circleci/orb-tools@11.1
 
 filters: &filters
@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - pact-orb/greet
+      - pact/greet
 workflows:
   test-deploy:
     jobs:
@@ -26,7 +26,7 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
-          orb-name: conpago/pact-orb
+          orb-name: conpago/pact
           vcs-type: << pipeline.project.type >>
           pub-type: production
           requires:
