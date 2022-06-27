@@ -11,7 +11,7 @@ usage:
         - image: pact # this will use the latest version of the pact image
       steps:
         - checkout
-        - publish_pacts:
+        - pact/publish_pacts:
             path: ./pacts
             consumer_version: $CIRCLE_SHA1
             tag: $CIRCLE_BRANCH

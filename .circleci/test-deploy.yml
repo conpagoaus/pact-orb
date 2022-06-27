@@ -16,7 +16,10 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - pact/greet
+      - pact/publish_pacts:
+          path: ./pacts
+          consumer_version: $CIRCLE_SHA1
+          tag: $CIRCLE_BRANCH
 workflows:
   test-deploy:
     jobs:
