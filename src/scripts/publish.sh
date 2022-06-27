@@ -36,7 +36,7 @@ COMMAND="pact-broker can-i-deploy \
         --retry-interval 10"
 
 # if DRY_RUN is set
-if [ ! -z "$DRY_RUN" ]; then
+if [ ! -n "$DRY_RUN" ]; then
   echo "Dry run: $COMMAND"
   exit 0
 else
