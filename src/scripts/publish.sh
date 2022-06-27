@@ -29,7 +29,7 @@ while getopts ":c:v:e:dh" opt; do
   esac
 done
 COMMAND="pact-broker can-i-deploy \
-        --pacticipant "$CONSUMER" \
+        --pacticipant \"$CONSUMER\" \
         --version $VERSION \
         --to-environment $ENVIRONMENT \
         --retry-while-unknown 0 \
