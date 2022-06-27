@@ -6,9 +6,7 @@ A project template for Orbs.
 
 This repository is designed to be automatically ingested and modified by the CircleCI CLI's `orb init` command.
 
-_**Edit this area to include a custom title and description.**_
-
----
+The orb is designed to simplify usage of [pact](https://pact.io/) - fast, easy and reliable testing for integrating web apps, APIs and microservices
 
 ## Resources
 
